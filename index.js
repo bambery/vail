@@ -24,7 +24,7 @@ demoArr = create1IdxArr()
 const createArrForDisplay = (arr, parentEle) => {
     arr.forEach(num => {
         const liEle = document.createElement('div')
-        liEle.className = 'num-arr-item'
+        liEle.classList.add('num-arr-item')
         liEle.append(num)
         parentEle.append(liEle)
     })
@@ -40,10 +40,10 @@ inputLenEle.addEventListener(
     "focusout", (e) => {
         const arrLen = e.target.value
         if (!inputLenEle.validity.valid) {
-            notifEle.hidden = false
+            notifEle.classList.remove('hidden')
             notifEle.innerHTML = errorMessages.arrLen
         } else if (arrLen && inputLenEle.validity.valid) {
-            notifEle.hidden = true
+            notifEle.classList.add('hidden')
             demoArr = create1IdxArr(arrLen)
             createDemoEle(demoArr)
         }
@@ -54,11 +54,11 @@ inputNumRotEle.addEventListener(
     "focusout", (e) => {
         const numRot = e.target.value
         if (!inputNumRotEle.validity.valid) {
-            notifEle.hidden = false
+            notifEle.classList.remove('hidden')
             notifEle.innerHTML = errorMessages.numRot
             numRotations = undefined
         } else if (numRot && inputNumRotEle.validity.valid) {
-            notifEle.hidden = true
+            notifEle.classList.add('hidden')
             numRotations = numRot
         }
     }
@@ -67,21 +67,29 @@ inputNumRotEle.addEventListener(
 rotateBtn.addEventListener(
     "click", (e) => {
         if (inputNumRotEle.validity.valid && inputLenEle.validity.valid) {
-            notifEle.hidden = true
-            clearBtn.hidden = false
+            let rotationResult
+            notifEle.classList.add('hidden')
+            resultEle.classList.remove('hidden')
 
-            const resultTitle = document.createElement('h2')
+            const resultArrEle = document.createElement('div')
+            resultArrEle.classList.add('number-array')
+            try {
+                rotationResult = rotate(demoArr, numRotations)
+            } catch (e) {
+                notifEle.innerHTML = e
+                notifEle.classList.remove('hidden')
+                return
+            }
+
+            const resultTitle = document.createElement('h3')
             resultTitle.innerHTML = `Your array has been rotated ${numRotations} times to the left!`
             resultEle.append(resultTitle)
 
-
-            const resultArrEle = document.createElement('div')
-            resultArrEle.className = 'number-array'
-            const rotationResult = rotate(demoArr, numRotations)
             createArrForDisplay(rotationResult, resultArrEle)
             resultEle.append(resultArrEle)
+            clearBtn.classList.remove('hidden')
         } else {
-            notifEle.hidden = false
+            notifEle.classList.remove('hidden')
             notifEle.innerHTML = errorMessages.submitRequirements
         }
     }
@@ -90,7 +98,8 @@ rotateBtn.addEventListener(
 clearBtn.addEventListener(
     "click", (e) => {
         resultEle.innerHTML = ''
-        clearBtn.hidden = true
+        resultEle.classList.add('hidden')
+        clearBtn.classList.add('hidden')
     }
 )
 

@@ -1,0 +1,78 @@
+:root {
+    --blue-mid: #00b7eb;
+    --purple-btn: #4b0082;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.number-array {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}
+
+.num-arr-item {
+    padding: 10px;
+    border: solid 2px var(--blue-mid);
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.input-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.rotation-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.custom-input {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+    & input[type=number] {
+        appearance: textfield;
+        text-align: center;
+        width: 7rem;
+        border-top: unset;
+        border-left: unset;
+        border-right: unset;
+        border-bottom: solid 2px var(--blue-mid);
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.button {
+    line-height: 1;
+    color: white;
+    background-color: var(--blue-mid);
+    border-radius: 7px;
+    border: none;
+    padding: 7px;
+    &:hover {
+        filter: brightness(0.8);
+    }
+}
+
+.button-clear {
+    background-color: gray;
+}
+
+#notification {
+    color: red;
+    border: solid 2px red;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}

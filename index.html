@@ -9,25 +9,26 @@
         <link rel="stylesheet" href="modern-normalize.css">
     </head>
     <body>
-        <main>
-            <h1>Vail take-home question</h1>
-            <div class='number-array' id='number-array-demo'></div>
-            <div id='notification' hidden></div>
-            <div class='custom-input'>
-                <div class='input-item'>
-                    <label for='arr-len'>How many elements would you like in the array?</label>
-                    <input type='number' name='arr-len' id='arr-len' value='7' min='1' max='20' autocomplete='off'/ required>
+            <div class='content'>
+                <h1>Vail take-home question</h1>
+                <div class='number-array' id='number-array-demo'></div>
+                <div id='notification' class='hidden'></div>
+                <div class='custom-input'>
+                    <div class='input-item'>
+                        <label for='arr-len'>How many elements would you like in the array?</label>
+                        <input type='number' name='arr-len' id='arr-len' value='7' min='1' max='200' autocomplete='off'/ required>
+                    </div>
+                    <div class='input-item'>
+                        <label for='num-rotations'>How many positions would you like to rotate the array to the left?</label>
+                        <input type='number' name='num-rotations' id='num-rotations' min='0' autocomplete='off' required/>
+                    </div>
                 </div>
-                <div class='input-item'>
-                    <label for='num-rotations'>How many positions would you like to rotate the array to the left?</label>
-                    <input type='number' name='num-rotations' id='num-rotations' min='1' autocomplete='off' required/>
+                <button class='button' id='rotate-button'>Rotate!</button>
+                <div id='rotation-result' class='rotation-result hidden'>
+                    <h2>Your rotation results:</h2>
                 </div>
+                <button class='button button-clear hidden' id='clear-results-button'>Clear Results</button>
             </div>
-            <button class='button' id='rotate-button'>Rotate!</button>
-            <div id='rotation-result'>
-            </div>
-            <button class='button button-clear' id='clear-results-button' hidden>Clear Results</button>
-            <script type='module' src='index.js'></script>
-        </main>
+        <script type='module' src='index.js'></script>
     </body>
 </html>

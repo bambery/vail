@@ -3,7 +3,7 @@ import { rotate } from './answer.js'
 const errorMessages = {
     arrLen: 'Please enter a number between 1 and 20.',
     numRot: 'Please enter a non-negative number for rotations.',
-    submitRequirements: 'Array length must be a number between 1 and 20, and the number of rotations must be a number greater than 0'
+    submitRequirements: 'Array length must be a number between 1 and 20, and the number of rotations must be a positive number'
 }
 
 const inputNumRotEle = document.getElementById('num-rotations')
@@ -32,12 +32,12 @@ const createArrForDisplay = (arr, parentEle) => {
 
 const createDemoEle = (arr) => {
     const numArrDemoEle = document.getElementById('number-array-demo')
-    numArrDemoEle.innerHTML = ""
+    numArrDemoEle.innerHTML = ''
     createArrForDisplay(arr, numArrDemoEle)
 }
 
 inputLenEle.addEventListener(
-    "focusout", (e) => {
+    'focusout', (e) => {
         const arrLen = e.target.value
         if (!inputLenEle.validity.valid) {
             notifEle.classList.remove('hidden')
@@ -51,7 +51,7 @@ inputLenEle.addEventListener(
 )
 
 inputNumRotEle.addEventListener(
-    "focusout", (e) => {
+    'focusout', (e) => {
         const numRot = e.target.value
         if (!inputNumRotEle.validity.valid) {
             notifEle.classList.remove('hidden')
@@ -65,7 +65,7 @@ inputNumRotEle.addEventListener(
 )
 
 rotateBtn.addEventListener(
-    "click", (e) => {
+    'click', (e) => {
         if (inputNumRotEle.validity.valid && inputLenEle.validity.valid) {
             let rotationResult
             notifEle.classList.add('hidden')
@@ -96,7 +96,7 @@ rotateBtn.addEventListener(
 )
 
 clearBtn.addEventListener(
-    "click", (e) => {
+    'click', (e) => {
         resultEle.innerHTML = ''
         resultEle.classList.add('hidden')
         clearBtn.classList.add('hidden')
